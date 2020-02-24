@@ -15,10 +15,18 @@
 #include <iostream>
 
 char shiftAlphaCharacter(char c, int n) {
+    if (n >= 0) {
     if (c >= 'a' && c <= 'z') {
-        c = (c - 'a' + n) % 26 + 'a';
+        c = (c + n - 'a') % 26 + 'a';
     } else if (c >= 'A' && c <= 'z') {
-         c = (c - 'A' + n) % 26 + 'A';
+         c = (c + n - 'A') % 26 + 'A';
+        }
+    } else if (n < 0) {
+        if (c >= 'a' && c <= 'z') {
+            c = 'z' - (('z' - c - n) % 26);
+        } else if (c >= 'A' && c <= 'z') {
+            c = 'Z' - (('Z' - c - n) % 26);
+        }
     }
     return c;
 }
@@ -30,9 +38,10 @@ char shiftAlphaCharacter(char c, int n) {
          }
          } else if (encrypt == 0) {
              for (int j = 0; j < original.size(); j++) {
-             original.at(j) = shiftAlphaCharacter(original.at(j), -key);
+             original.at(j) = shiftAlphaCharacter(original.at(j), (key * -1));
              }
          }
      return original;
  }
+
 
