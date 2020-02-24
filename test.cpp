@@ -21,10 +21,18 @@ using namespace std;
 
 void testShiftAlphaCharacter();
 void testToUpperCase();
+void testCaesarCipher();
+void testRemoveNonAlphas();
+void testRemoveDuplicate();
+void testCharToInt();
 
 void startTests() {
     testShiftAlphaCharacter();
     testToUpperCase();
+    testCaesarCipher();
+    testRemoveNonAlphas();
+    testRemoveDuplicate();
+    testCharToInt();
     // Repeat for all other functions to be tested
 
     return;
@@ -49,21 +57,38 @@ void testToUpperCase() {
 
 void testRemoveNonAlphas() {
     cout << "Now testing function removeNonAlphas()" << endl;
+    cout << "Expected: happy, Actual: '" << removeNonAlphas("happy") << "'" << endl;
+    cout << "Expected: roger, Actual: '" << removeNonAlphas("rog2er") << "'" << endl;
+    cout << "Expected: b, Actual: '" << removeNonAlphas("b8$") << "'" << endl;
+    return;
     
 }
 
 void testRemoveDuplicate() {
     cout << "Now testing function removeDuplicate()" << endl;
+    cout << "Expected: HAPY, Actual: " << removeDuplicate("HAPPY") << "" << endl;
+    cout << "Expected: ROGE, Actual: " << removeDuplicate("ROOOOGER") << "" << endl;
+    cout << "Expected: FRIENDS, Actual: " << removeDuplicate("FRIENDS") << "" << endl;
+    return;
     
 }
 
 void testCharToInt() {
     cout << "Now testing function charToInt()" << endl;
+    cout << "Expected: 1, Actual: " << charToInt('1') << "" << endl;
+    cout << "Expected: 2, Actual: " << charToInt('2') << "" << endl;
+    cout << "Expected: 0, Actual: " << charToInt('0') << "" << endl;
+    return;
     
 }
 
 void testCaesarCipher() {
     cout << "Now testing function caesarCipher()" << endl;
+    cout << "Now testing function toUpperCase()" << endl;
+    cout << "Expected: , Actual: " << caesarCipher("Hello", 5, false) << "" << endl;
+    cout << "Expected: , Actual: " << caesarCipher("Hello", 5, true) << "" << endl;
+    cout << "Expected: , Actual: " << caesarCipher("friendLY", 4, true) << "" << endl;
+    return;
     
 }
 
