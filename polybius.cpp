@@ -2,8 +2,8 @@
  * polybius.cpp
  * Project UID e98fd45ccce9d7195e89e6171a5451f2
  *
- * <#Names#>
- * <#Uniqnames#>
+ * Shayla Coombs, Mary Volger
+ * sjcoombs,
  *
  * EECS 183: Project 3
  * Winter 2020
@@ -13,28 +13,20 @@
 
 
 #include "polybius.h"
-#include "utility.h"
 #include <string>
-#include <iostream>
-
 using namespace std;
 
 
 void fillGrid(char grid[SIZE][SIZE], string content) {
-    int contentCount = 0;
-    for (int i = 0; i < SIZE; i++) {
-        for (int j = 0; j < SIZE; j++) {
-            grid[i][j] = content.at(contentCount);
-            contentCount++;
-        }
+    for(int i = 0;  i  < content.length();  i++) {
+        printGrid(grid);
     }
 }
 
 
-
 string mixKey(string key) {
-  
-    return "";
+    string removing = key  + ALNUM;
+    return removeDuplicate(removing);
 }
 
 
