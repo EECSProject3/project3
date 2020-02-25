@@ -37,23 +37,24 @@ void ciphers() {
         for(int j = 0; j < encryptOrDecrypt.length(); j++) {
             encryptOrDecrypt[j] = tolower(encryptOrDecrypt[j]);
         }
-        cout << endl;
         
         cout << "Enter a message: ";
         string message = "";
         getline(cin, message);
-        cout << endl;
         
         int keyInt;
         cout << "What is your key: ";
         cin >> keyInt;
         
         cout << "The encrypted message is: ";
-        if(encryptOrDecrypt == "encrypt") {
+        if(encryptOrDecrypt == "encrypt" || encryptOrDecrypt == "e") {
             cout << caesarCipher(message, keyInt, true);
         }
-        else {
+        else if (encryptOrDecrypt == "decrypt" || encryptOrDecrypt == "d") {
             cout << caesarCipher(message, keyInt, false);
+        }
+        else {
+            cout << "Invalid mode!";
         }
     }
     else if(cipher == "vigenere" || cipher == "v") {
@@ -64,12 +65,10 @@ void ciphers() {
         for(int j = 0; j < encryptOrDecrypt.length(); j++) {
             encryptOrDecrypt[j] = tolower(encryptOrDecrypt[j]);
         }
-        cout << endl;
             
         cout << "Enter a message: ";
         string message = "";
         getline(cin, message);
-        cout << endl;
         
         cout << "What is your key: ";
             getline(cin, keyStr);
