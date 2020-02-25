@@ -22,113 +22,103 @@ using namespace std;
 
 
 void ciphers() {
-    cout << "Choose a cipher (Caesar, Vigenere, or Polybius): ";
-    string cipher = "";
-    getline(cin, cipher);
-    for(int i = 0; i <  cipher.length(); i++) {
-        cipher[i] = tolower(cipher[i]);
-    }
-    if(cipher == "caesar" || cipher == "c") {
-        
-        cout << "Encrypt or decrypt: ";
-        string encryptOrDecrypt = "";
-        getline(cin, encryptOrDecrypt);
-        
-        for(int j = 0; j < encryptOrDecrypt.length(); j++) {
-            encryptOrDecrypt[j] = tolower(encryptOrDecrypt[j]);
-        }
-        
-        cout << "Enter a message: ";
-        string message = "";
-        getline(cin, message);
-        
-        int keyInt;
-        cout << "What is your key: ";
-        cin >> keyInt;
-        
-        cout << "The encrypted message is: ";
-        if(encryptOrDecrypt == "encrypt" || encryptOrDecrypt == "e") {
-            cout << caesarCipher(message, keyInt, true);
-        }
-        else if (encryptOrDecrypt == "decrypt" || encryptOrDecrypt == "d") {
-            cout << caesarCipher(message, keyInt, false);
-        }
-        else {
-            cout << "Invalid mode!";
-        }
-    }
-    else if(cipher == "vigenere" || cipher == "v") {
-        string keyStr = "";
-        cout << "Encrypt or decrypt: ";
-        string encryptOrDecrypt = "";
-        getline(cin, encryptOrDecrypt);
-        for(int j = 0; j < encryptOrDecrypt.length(); j++) {
-            encryptOrDecrypt[j] = tolower(encryptOrDecrypt[j]);
-        }
-            
-        cout << "Enter a message: ";
-        string message = "";
-        getline(cin, message);
-        
-        cout << "What is your key: ";
-            getline(cin, keyStr);
-        
-            int count = 0;
-            for(int i = 0; i <= keyStr.length(); i++) {
-                if(tolower(keyStr[i]) >= 0 && tolower(keyStr[i] <= 26)) {
-                count++;
-                }
-            }
-            if(count == 0) {
-                cout << "Invalid key!";
-            }
-            
-            
-        if(encryptOrDecrypt == "encrypt" || encryptOrDecrypt == "e") {
-            cout << "The encrypted message is: ";
-            cout << vigenereCipher(message, keyStr, true);
-        }
-        else if(encryptOrDecrypt == "decrypt" || encryptOrDecrypt == "d"){
-            cout << "The decrypted message is: ";
-            cout << vigenereCipher(message, keyStr, false);
-        }
-        else {
-            cout << "Invalid Mode!";
-        }
-        
-}
+     cout << "Choose a cipher (Caesar, Vigenere, or Polybius): ";
+     string cipher = "";
+     getline(cin, cipher);
+     for(int i = 0; i <  cipher.length(); i++) {
+         cipher[i] = tolower(cipher[i]);
+     }
+     if(cipher == "caesar" || cipher == "c") {
+         
+         cout << "Encrypt or decrypt: ";
+         string encryptOrDecrypt = "";
+         getline(cin, encryptOrDecrypt);
+         for(int j = 0; j < encryptOrDecrypt.length(); j++) {
+             encryptOrDecrypt[j] = tolower(encryptOrDecrypt[j]);
+         }
+         
+         cout << "Enter a message: ";
+         string message = "";
+         getline(cin, message);
+         
+         int keyInt;
+         cout << "What is your key: ";
+         cin >> keyInt;
+         
+         cout << "The encrypted message is: ";
+         if(encryptOrDecrypt == "encrypt") {
+          cout << caesarCipher(message, keyInt, true) << endl;
+         }
+         else {
+          cout << caesarCipher(message, keyInt, false);
+         }
+     }
+     else if(cipher == "vigenere" || cipher == "v") {
 
-    else if(cipher == "polybius" || cipher == "p") {
-        cout << "Encrypt or decrypt: ";
-        string encryptOrDecrypt = "";
-        getline(cin, encryptOrDecrypt);
-        for(int j = 0; j < encryptOrDecrypt.length(); j++) {
-            encryptOrDecrypt[j] = tolower(encryptOrDecrypt[j]);
-        }
-        cout << endl;
+             cout << "Encrypt or decrypt: ";
+             string encryptOrDecrypt = "";
+             getline(cin, encryptOrDecrypt);
+             for(int j = 0; j < encryptOrDecrypt.length(); j++) {
+                 encryptOrDecrypt[j] = tolower(encryptOrDecrypt[j]);
+             }
+             
+             cout << "Enter a message: ";
+             string message = "";
+             getline(cin, message);
+             
+          cout << "What is your key: ";
+                string keyStr = "";
+                getline(cin, keyStr);
+                
+                int count = 0;
+                for(int i = 0; i < keyStr.length(); i++) {
+                    if((keyStr.at(i) >= 'a' && keyStr.at(i) <= 'z') || (keyStr.at(i) >= 'A' && keyStr.at(i) <= 'Z')) {
+                        count++;
+                    }
+                }
+            if(count >= 1) {
+             keyStr = removeNonAlphas(keyStr);
+             cout << "The encrypted message is: ";
+                if (encryptOrDecrypt == "encrypt") {
+                   cout << vigenereCipher(message, keyStr, true) << endl;
+                } else {
+                   cout << vigenereCipher(message, keyStr, false) << endl;
+             }
+         } else {
+             cout << "Invalid key!";
+             return;
+         }
+     }
+     else if(cipher == "polybius" || cipher == "p") {
+         cout << "What is your key: ";
+         string keyStr = "";
+         getline(cin, keyStr);
+         
+         cout << "Encrypt or decrypt: ";
+         string encryptOrDecrypt = "";
+         getline(cin, encryptOrDecrypt);
+         for(int j = 0; j < encryptOrDecrypt.length(); j++) {
+             encryptOrDecrypt[j] = tolower(encryptOrDecrypt[j]);
+         }
+         cout << endl;
+         
+         cout << "Enter a message: ";
+         string message = "";
+         getline(cin, message);
+         cout << endl;
+         if(message.length() == 36) {
+             cout << "The encrypted message is: ";
+             if(encryptOrDecrypt == "encrypt") {
+               //  polybiusSquare(grid, keyStr, original, true);
+             }
+             else {
+                // polybiusSquare(grid, keyStr, original, false);
+             }
+         }
         
-        cout << "Enter a message: ";
-        string message = "";
-        getline(cin, message);
-        cout << endl;
-        
-        cout << "What is your key: ";
-        string keyStr = "";
-        getline(cin, keyStr);
-        
-        if(message.length() == 36) {
-            cout << "The encrypted message is: ";
-            if(encryptOrDecrypt == "encrypt") {
-            //    polybiusSquare(grid, keyStr, message, true);
-            }
-            else {
-           //     polybiusSquare(grid, keyStr, message, false);
-            }
-        }
-       
-    }
-    else {
-        cout << "Invalid cipher!";
-    }
-    return;
-}
+     }
+     else {
+         cout << "Invalid cipher!";
+     }
+     return;
+ }
