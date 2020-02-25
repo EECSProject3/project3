@@ -57,8 +57,28 @@ string findInGrid(char c, char grid[SIZE][SIZE]) {
 }
 
 string polybiusSquare(char grid[SIZE][SIZE], string key, string original, bool encrypt) {
-    // TODO: implement
-
-    // returning a string to avoid compile error
-    return "";
+    string final = "";
+    fillGrid(grid, mixKey(key));
+    if (encrypt == 1) {
+        for (int i = 0; i < original.size(); i++) {
+            if (original.at(i) != ' ') {
+                final += findInGrid(original.at(i), grid);
+            } else if (original.at(i) == ' ') {
+                final += ' ';
+            }
+        }
+        
+    } else if (encrypt == 0) {
+        for (int i = 0; i < original.size(); i++)
+            if (original.at(i) == ' ') {
+                final += ' ';
+            } else {
+                int row = charToInt(original.at(i));
+                int col = charToInt(original.at(i + 1));
+                final += grid[row][col];
+                i = i + 1;
+            }
+        }
+    return final;
 }
+
