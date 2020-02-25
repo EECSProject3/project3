@@ -59,25 +59,37 @@ void ciphers() {
         string keyStr = "";
         getline(cin, keyStr);
         
-        cout << "Encrypt or decrypt: ";
-        string encryptOrDecrypt = "";
-        getline(cin, encryptOrDecrypt);
-        for(int j = 0; j < encryptOrDecrypt.length(); j++) {
-            encryptOrDecrypt[j] = tolower(encryptOrDecrypt[j]);
+        int count = 0;
+        for(int i = 0; i < keyStr.length(); i++) {
+            if(toupper(keyStr[i]) == ALNUM[i]) {
+                count++;
+            }
         }
-        cout << endl;
-        
-        cout << "Enter a message: ";
-        string message = "";
-        getline(cin, message);
-        cout << endl;
-        
-        cout << "The encrypted message is: ";
-        if(encryptOrDecrypt == "encrypt") {
-            vigenereCipher(message, keyStr, true);
+        if(count >= 1) {
+            cout << "Encrypt or decrypt: ";
+            string encryptOrDecrypt = "";
+            getline(cin, encryptOrDecrypt);
+            for(int j = 0; j < encryptOrDecrypt.length(); j++) {
+                encryptOrDecrypt[j] = tolower(encryptOrDecrypt[j]);
+            }
+            cout << endl;
+            
+            cout << "Enter a message: ";
+            string message = "";
+            getline(cin, message);
+            cout << endl;
+            
+            cout << "The encrypted message is: ";
+            if(encryptOrDecrypt == "encrypt") {
+                vigenereCipher(message, keyStr, true);
+            }
+            else {
+                vigenereCipher(message, keyStr, false);
+            }
         }
         else {
-            vigenereCipher(message, keyStr, false);
+            cout << "Invalid key!";
+            return;
         }
     }
     else if(cipher == "polybius" || cipher == "p") {
@@ -100,10 +112,10 @@ void ciphers() {
         if(message.length() == 36) {
             cout << "The encrypted message is: ";
             if(encryptOrDecrypt == "encrypt") {
-                polybiusSquare(grid[SIZE][SIZE], keyStr, original, true);
+              //  polybiusSquare(grid, keyStr, original, true);
             }
             else {
-                polybiusSquare(grid[SIZE][SIZE], keyStr, original, false);
+               // polybiusSquare(grid, keyStr, original, false);
             }
         }
        
@@ -111,9 +123,5 @@ void ciphers() {
     else {
         cout << "Invalid cipher!";
     }
-  
-    
-    
-
     return;
 }
