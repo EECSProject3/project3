@@ -18,13 +18,13 @@ char shiftAlphaCharacter(char c, int n) {
     if (n >= 0) {
     if (c >= 'a' && c <= 'z') {
         c = (c + n - 'a') % 26 + 'a';
-    } else if (c >= 'A' && c <= 'z') {
+    } else if (c >= 'A' && c <= 'Z') {
          c = (c + n - 'A') % 26 + 'A';
         }
     } else if (n < 0) {
         if (c >= 'a' && c <= 'z') {
             c = 'z' - (('z' - c - n) % 26);
-        } else if (c >= 'A' && c <= 'z') {
+        } else if (c >= 'A' && c <= 'Z') {
             c = 'Z' - (('Z' - c - n) % 26);
         }
     }

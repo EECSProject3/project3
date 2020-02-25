@@ -45,12 +45,14 @@ void ciphers() {
          cout << "What is your key: ";
          cin >> keyInt;
         
-         cout << "The encrypted message is: ";
-        
              if (encryptOrDecrypt == "ENCRYPT" || encryptOrDecrypt == "E") {
+               cout << "The encrypted message is: ";
                cout << caesarCipher(message, keyInt, true) << endl;
+                 
              } else if (encryptOrDecrypt == "DECRYPT" || encryptOrDecrypt == "D") {
-          cout << caesarCipher(message, keyInt, false);
+               cout << "The decrypted message is: ";
+               cout << caesarCipher(message, keyInt, false) << endl;
+                 
              }
         } else {
              cout << "Invalid mode!" << endl;
@@ -82,10 +84,12 @@ void ciphers() {
                 }
             if(count >= 1) {
              keyStr = removeNonAlphas(keyStr);
-             cout << "The encrypted message is: ";
                 if (encryptOrDecrypt == "ENCRYPT" || encryptOrDecrypt == "E") {
+                   cout << "The encrypted message is: ";
                    cout << vigenereCipher(message, keyStr, true) << endl;
+                    
                 } else if (encryptOrDecrypt == "DECRYPT" || encryptOrDecrypt == "D"){
+                   cout << "The decrypted message is: ";
                    cout << vigenereCipher(message, keyStr, false) << endl;
                 }
                 
@@ -126,11 +130,15 @@ void ciphers() {
          keyStr = toUpperCase(keyStr);
          keyStr = removeDuplicate(keyStr);
     
-             cout << "The encrypted message is: ";
+             
              if(encryptOrDecrypt == "ENCRYPT" || encryptOrDecrypt == "E") {
+               cout << "The encrypted message is: ";
                cout << polybiusSquare(grid, keyStr, message, true) << endl;
-             } else if(encryptOrDecrypt == "DECRYPT" || encryptOrDecrypt == "E") {
+                 
+             } else if(encryptOrDecrypt == "DECRYPT" || encryptOrDecrypt == "D") {
+               cout << "The decrypted message is: ";
                cout << polybiusSquare(grid, keyStr, message, false) << endl;
+                 
              } else {
                  cout << "Invalid mode!" << endl;
              }

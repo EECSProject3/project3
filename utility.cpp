@@ -16,47 +16,44 @@
 
 
 string toUpperCase(string original) {
-    for(int i = 0; i < original.size(); i++) {
-        if(original[i] >= 97 && original[i] <= 122)
-        {
-          original[i] = original[i] - 32;
-        }
+    for (int i = 0; i < original.size(); i++) {
+        if (original.at(i) >= 'a' && original.at(i) <= 'z') {
+            original.at(i) = original.at(i) - 32;
+    }
     }
     return original;
 }
 
 string removeNonAlphas(string original) {
-    // TODO: implement
-    string alphas = "";
-    for(int i = 0; i < original.size(); i++) {
-        if((original[i] >= 'A' || original[i] <= 'Z') && (original[i]  >= 'a' &&  original[i] <=  'z')) {
-            alphas += original[i];
+    string newString = "";
+    for (int i = 0; i < original.size(); i++) {
+        if (((original.at(i) >= 'A' && original.at(i) <= 'Z')
+              || (original.at(i) >= 'a' && original.at(i) <= 'z'))) {
+            newString += original.at(i);
         }
     }
-    // returning 1a string to avoid compile error
-    return alphas;
+    return newString;
 }
 
-string removeDuplicate(string original) {
-    string noDupes = "";
-    for(int i = 0; i < original.length(); i++) {
-        int j;
-        for(j = 0; j < i; j++) {
-            if(original[i] == original[j])  {
-                break;
-            }
-        }
-        if(j == i) {
-            noDupes += original[i];
-        }
-    }
-    return noDupes;
-}
-
+ string removeDuplicate(string original) {
+     string noDupes = "";
+     for(int i = 0; i < original.length(); i++) {
+         int j;
+         for(j = 0; j < i; j++) {
+             if(original[i] == original[j])  {
+                 break;
+             }
+         }
+         if(j == i) {
+             noDupes += original[i];
+         }
+     }
+     return noDupes;
+ }
 
 int charToInt(char original) {
-    int nonChar = original - '0';
-    return nonChar;
+       int nonChar = original - '0';
+       return nonChar;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
